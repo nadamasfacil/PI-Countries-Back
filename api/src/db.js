@@ -6,8 +6,6 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY
 } = process.env;
 
-// PGPASSWORD=rqZQSPV9qyv3K3j1THQR psql -h containers-us-west-180.railway.app -U postgres -p 6352 -d railway
-
 const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false, // set to console.log to see the raw SQL queries (las queries SQL crudas)
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
