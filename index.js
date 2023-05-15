@@ -17,14 +17,16 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+require('dotenv').config();
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getAllCountriesApi } = require('./src/helpers/countriesLoading.js');
+const port = process.env.PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then( async () => {
   await getAllCountriesApi();
-  server.listen(3001, () => {
+  server.listen(port, "0.0.0.0", () => {
     console.log('Server listening at 3001'); // eslint-disable-line no-console
   });
 });
